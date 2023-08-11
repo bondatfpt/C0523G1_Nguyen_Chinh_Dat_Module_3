@@ -2,17 +2,17 @@ create database khu_nghi_duong_furama;
 use khu_nghi_duong_furama;
 
 create table vi_tri(
-ma_vi_tri int primary key auto_increment,
+ma_vi_tri int primary key auto_increment not null,
 ten_vi_tri varchar(45) not null
 );
 
 create table trinh_do(
-ma_trinh_do int primary key auto_increment,
+ma_trinh_do int primary key auto_increment not null,
 ten_trinh_do varchar(45) not null
 );
 
 create table bo_phan(
-ma_bo_phan int primary key auto_increment,
+ma_bo_phan int primary key auto_increment not null,
 ten_bo_phan varchar(45) not null
 );
 
