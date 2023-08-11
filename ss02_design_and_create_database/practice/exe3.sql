@@ -13,6 +13,5 @@ student_id int not null primary key auto_increment,
 student_name varchar(30) not null,
 address varchar(50) not null,
 phone varchar(20),
-status bit,
-
+status bit
 );
