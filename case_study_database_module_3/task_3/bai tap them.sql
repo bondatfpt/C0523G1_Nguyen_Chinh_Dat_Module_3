@@ -72,4 +72,4 @@ insert into instructor(`name`,birthday, salary)
 
  insert into instructor_class(class_id,instructor_id) values (1,1),(1,2),(2,1),(2,2),(3,1),(3,2);
 
-select class_id from student ;
+
