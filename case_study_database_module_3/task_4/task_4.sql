@@ -13,7 +13,8 @@ char_length(substring_index(ho_va_ten, ' ', -1)) <= 15;
 -- 3.	Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị”.
 select * 
 from khach_hang
-where (subdate(curdate(), interval 18 year) >= ngay_sinh 
+where 
+(subdate(curdate(), interval 18 year) >= ngay_sinh 
 and (subdate(curdate(), interval 50 year) <= ngay_sinh ))
 and
 (( dia_chi like '%Đà Nẵng%'
