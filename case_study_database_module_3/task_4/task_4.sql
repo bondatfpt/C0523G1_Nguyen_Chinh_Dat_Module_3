@@ -1,6 +1,7 @@
 use khu_nghi_duong_furama;
 select *from nhan_vien;
 select* from hop_dong;
+select*from dich_vu;
 -- 2.	Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 kí tự.
 select *
 from nhan_vien
@@ -14,18 +15,19 @@ select *
 from khach_hang
 where (subdate(curdate(), interval 18 year) >= ngay_sinh 
 and (subdate(curdate(), interval 50 year) <= ngay_sinh ))
-and(( dia_chi like '%Đà Nẵng%'
+and
+(( dia_chi like '%Đà Nẵng%'
 or dia_chi like '%Quảng Trị%'));
 
 -- 4.	Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần. 
 -- Kết quả hiển thị được sắp xếp tăng dần theo số lần đặt phòng của khách hàng.
 -- Chỉ đếm những khách hàng nào có Tên loại khách hàng là “Diamond”.
-select khach_hang.ho_va_ten, count(*) as so_lan_dat_phong
+select khach_hang.ma_khach_hang,khach_hang.ho_va_ten,count(*) as so_lan_dat_phong
 from khach_hang
 join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
 join hop_dong on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
-where loai_khach.ten_loai_khach = 'Diamond'
-group by khach_hang.ho_va_ten
+-- where loai_khach.ten_loai_khach = 'Diamond'
+group by khach_hang.ho_va_ten, khach_hang.ma_khach_hang
 order by so_lan_dat_phong;
 
 -- 5.	Hiển thị ma_khach_hang, ho_ten, ten_loai_khach, ma_hop_dong, ten_dich_vu, ngay_lam_hop_dong, ngay_ket_thuc, tong_tien
@@ -33,16 +35,16 @@ order by so_lan_dat_phong;
 --  cho tất cả các khách hàng đã từng đặt phòng. 
 -- (những khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
 
-select khach_hang.ma_khach_hang, khach_hang.ho_va_ten,
+select 
+		khach_hang.ma_khach_hang, khach_hang.ho_va_ten,
 		loai_khach.ten_loai_khach,hop_dong.ma_hop_dong,
-        dich_vu.ten_dich_vu,
-        hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc,
-        chi_phi_thue + (so_luong * gia) as tong_tien
+		dich_vu.ten_dich_vu,
+		hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc
+	
 from khach_hang
 join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
-join hop_dong on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
+join hop_dong on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
 join dich_vu on dich_vu.ma_dich_vu = hop_dong.ma_dich_vu
-join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
-join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem;
-
+left join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+left join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem;
 
