@@ -39,8 +39,8 @@ select
 		khach_hang.ma_khach_hang, khach_hang.ho_va_ten,
 		loai_khach.ten_loai_khach,hop_dong.ma_hop_dong,
 		dich_vu.ten_dich_vu,
-		hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc
-	
+		hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc,
+		chi_phi_thue + ifnull(so_luong,0) * ifnull(gia,0) as tong_tien
 from khach_hang
 join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
 join hop_dong on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
