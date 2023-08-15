@@ -14,7 +14,7 @@ left join loai_dich_vu on loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
 left join hop_dong on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
 where dich_vu.ma_dich_vu not in (
 select ma_dich_vu from hop_dong 
-where quarter(ngay_lam_hop_dong) = 1 and year(ngay_lam_hop_dong) = 2021
+where year(ngay_lam_hop_dong) >= 2021
 )
 group by dich_vu.ma_dich_vu;
 
