@@ -46,7 +46,7 @@ select khach_hang.ho_va_ten
 from khach_hang
 group by ho_va_ten;
 
--- Cách 3: Dùng onion
+-- Cách 3: Dùng union
 select ho_va_ten from khach_hang
 union
 select ho_va_ten from khach_hang;
