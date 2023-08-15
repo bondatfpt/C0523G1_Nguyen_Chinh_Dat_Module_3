@@ -40,10 +40,14 @@ having dich_vu.ma_dich_vu not in (
 select distinct khach_hang.ho_va_ten 
 from khach_hang;
 
--- Cách 2: dùng group by
+-- Cách 2: Dùng group by
 select khach_hang.ho_va_ten
 from khach_hang
 group by ho_va_ten;
+-- Cách 3: Dùng onion
+select ho_va_ten from khach_hang
+union
+select ho_va_ten from khach_hang;
 
 -- 9.Thực hiện thống kê doanh thu theo tháng,nghĩa là tương ứng với mỗi tháng trong năm 2021 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng.
 select month(ngay_lam_hop_dong) as thang, count(ma_khach_hang) as so_luong
