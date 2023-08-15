@@ -40,10 +40,11 @@ order by so_lan_dat_phong;
 
 select 
 		khach_hang.ma_khach_hang, khach_hang.ho_va_ten,
-		loai_khach.ten_loai_khach,hop_dong.ma_hop_dong,
-		dich_vu.ten_dich_vu,
-		hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc,
-		sum(chi_phi_thue + ifnull(so_luong,0) * ifnull(gia,0)) as tong_tien
+		loai_khach.ten_loai_khach,ifnull(hop_dong.ma_hop_dong,'#no') as ma_hop_dong,
+		ifnull(dich_vu.ten_dich_vu,'#no') as ten_dich_vu,
+		ifnull(hop_dong.ngay_lam_hop_dong,'#no') as ngay_lam_hop_dong,
+        ifnull(hop_dong.ngay_ket_thuc,'#no') as ngay_ket_thuc,
+		ifnull(sum(chi_phi_thue + ifnull(so_luong,0) * ifnull(gia,0)),'#no') as tong_tien
 from khach_hang
 left join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
 left join hop_dong on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
