@@ -2,6 +2,7 @@ use khu_nghi_duong_furama;
 select *from nhan_vien;
 select* from hop_dong;
 select*from dich_vu;
+select* from hop_dong_chi_tiet;
 -- 2.	Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 kí tự.
 select *
 from nhan_vien
@@ -23,11 +24,11 @@ or dia_chi like '%Quảng Trị%'));
 -- 4.	Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần. 
 -- Kết quả hiển thị được sắp xếp tăng dần theo số lần đặt phòng của khách hàng.
 -- Chỉ đếm những khách hàng nào có Tên loại khách hàng là “Diamond”.
-select khach_hang.ma_khach_hang,khach_hang.ho_va_ten,count(*) as so_lan_dat_phong
+select khach_hang.ma_khach_hang,khach_hang.ho_va_ten,count(hop_dong.ma_hop_dong) as so_lan_dat_phong
 from khach_hang
-join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
-join hop_dong on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
--- where loai_khach.ten_loai_khach = 'Diamond'
+left join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
+left join hop_dong on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
+where loai_khach.ten_loai_khach = 'Diamond'
 group by khach_hang.ho_va_ten, khach_hang.ma_khach_hang
 order by so_lan_dat_phong;
 
