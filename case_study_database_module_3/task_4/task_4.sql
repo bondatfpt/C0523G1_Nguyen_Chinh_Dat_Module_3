@@ -1,8 +1,5 @@
 use khu_nghi_duong_furama;
-select *from nhan_vien;
-select* from hop_dong;
-select*from dich_vu;
-select* from hop_dong_chi_tiet;
+
 -- 2.	Hiển thị thông tin của tất cả nhân viên có trong hệ thống có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 kí tự.
 select *
 from nhan_vien
