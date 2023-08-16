@@ -37,12 +37,12 @@ select hop_dong_chi_tiet.ma_dich_vu_di_kem, sum(hop_dong_chi_tiet.so_luong) as s
 from hop_dong_chi_tiet
 join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
 group by dich_vu_di_kem.ma_dich_vu_di_kem
-having so_luong_su_dung_dvdk = (select sum(hop_dong_chi_tiet.so_luong) as so_luong
-					from hop_dong_chi_tiet
-                    group by ma_dich_vu_di_kem
-                    order by so_luong desc
-                    limit 1
-);
+having so_luong_su_dung_dvdk in (
+select max(truy_van_con.tong_so_luong_dvdk) from (
+select hop_dong_chi_tiet.ma_dich_vu_di_kem, sum(hop_dong_chi_tiet.so_luong) as tong_so_luong_dvdk
+from hop_dong_chi_tiet
+group by ma_dich_vu_di_kem) as truy_van_con);
+
 
 -- 14.Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất. 
 -- Thông tin hiển thị bao gồm ma_hop_dong, ten_loai_dich_vu, ten_dich_vu_di_kem, so_lan_su_dung 
