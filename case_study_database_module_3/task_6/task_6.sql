@@ -1,4 +1,5 @@
 use khu_nghi_duong_furama;
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 
 -- 11.Hiển thị thông tin các dịch vụ đi kèm đã được sử dụng bởi những 
 -- khách hàng có ten_loai_khach là “Diamond” và có dia_chi ở “Vinh” hoặc “Quảng Ngãi”.
@@ -48,11 +49,28 @@ group by ma_dich_vu_di_kem) as truy_van_con);
 -- 14.Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất. 
 -- Thông tin hiển thị bao gồm ma_hop_dong, ten_loai_dich_vu, ten_dich_vu_di_kem, so_lan_su_dung 
 -- (được tính dựa trên việc count các ma_dich_vu_di_kem).
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+select hop_dong.ma_hop_dong,loai_dich_vu.ten_loai_dich_vu,
+		dich_vu_di_kem.ten_dich_vu_di_kem,
+        count(hop_dong_chi_tiet.ma_dich_vu_di_kem) as so_lan_su_dung
+from hop_dong 
+join dich_vu on dich_vu.ma_dich_vu = hop_dong.ma_dich_vu
+join loai_dich_vu on loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
+join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+group by dich_vu_di_kem.ma_dich_vu_di_kem
+having so_lan_su_dung = 1;
 
-select hd.ma_hop_dong,loai_dich_vu.ten_loai_dich_vu
-from hop_dong hd
-join dich_vu dv on dv.ma_hop_dong = hd.ma_hop_dong
-join loai_dich_vu ldv on ldv.ma_loai_dich_vu = dv.ma_loai_dich_vu
+-- 15.Hiển thi thông tin của tất cả nhân viên bao gồm ma_nhan_vien, ho_ten, ten_trinh_do, ten_bo_phan, so_dien_thoai, dia_chi 
+-- mới chỉ lập được tối đa 3 hợp đồng từ năm 2020 đến 2021.
 
-
+select nhan_vien.ma_nhan_vien, nhan_vien.ho_va_ten,
+		trinh_do.ten_trinh_do, bo_phan.ten_bo_phan,
+        nhan_vien.so_dien_thoai, nhan_vien.dia_chi,
+        hop_dong.ngay_lam_hop_dong
+from nhan_vien
+join trinh_do on trinh_do.ma_trinh_do = nhan_vien.ma_trinh_do
+join bo_phan on bo_phan.ma_bo_phan = nhan_vien.ma_bo_phan
+join hop_dong on hop_dong.ma_nhan_vien = nhan_vien.ma_nhan_vien
+group by nhan_vien.ma_nhan_vien
 
