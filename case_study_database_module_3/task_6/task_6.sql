@@ -71,7 +71,7 @@ from nhan_vien
 join trinh_do on trinh_do.ma_trinh_do = nhan_vien.ma_trinh_do
 join bo_phan on bo_phan.ma_bo_phan = nhan_vien.ma_bo_phan
 join hop_dong on hop_dong.ma_nhan_vien = nhan_vien.ma_nhan_vien
-where year(ngay_lam_hop_dong) between 2020 and 2021
+and year(ngay_lam_hop_dong) between 2020 and 2021
 group by hop_dong.ma_nhan_vien
 having so_lan_lam_hop_dong < 4;
 
