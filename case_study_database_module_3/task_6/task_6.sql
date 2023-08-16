@@ -49,7 +49,6 @@ group by ma_dich_vu_di_kem) as truy_van_con);
 -- 14.Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất. 
 -- Thông tin hiển thị bao gồm ma_hop_dong, ten_loai_dich_vu, ten_dich_vu_di_kem, so_lan_su_dung 
 -- (được tính dựa trên việc count các ma_dich_vu_di_kem).
-SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 select hop_dong.ma_hop_dong,loai_dich_vu.ten_loai_dich_vu,
 		dich_vu_di_kem.ten_dich_vu_di_kem,
         count(hop_dong_chi_tiet.ma_dich_vu_di_kem) as so_lan_su_dung
