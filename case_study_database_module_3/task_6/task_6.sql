@@ -39,11 +39,12 @@ from hop_dong_chi_tiet
 join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
 group by dich_vu_di_kem.ma_dich_vu_di_kem
 having so_luong_su_dung_dvdk in (
-select max(truy_van_con.tong_so_luong_dvdk) from (
-select hop_dong_chi_tiet.ma_dich_vu_di_kem,
-sum(hop_dong_chi_tiet.so_luong) as tong_so_luong_dvdk
-from hop_dong_chi_tiet
-group by ma_dich_vu_di_kem) as truy_van_con);
+select max(truy_van_con.tong_so_luong_dvdk) 
+from (
+		select hop_dong_chi_tiet.ma_dich_vu_di_kem,
+		sum(hop_dong_chi_tiet.so_luong) as tong_so_luong_dvdk
+		from hop_dong_chi_tiet
+		group by ma_dich_vu_di_kem) as truy_van_con);
 
 
 -- 14.Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất. 
@@ -58,7 +59,8 @@ join loai_dich_vu on loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
 join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
 join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
 group by dich_vu_di_kem.ma_dich_vu_di_kem
-having so_lan_su_dung = 1;
+having so_lan_su_dung = 1
+order by ma_hop_dong;
 
 -- 15.Hiển thi thông tin của tất cả nhân viên bao gồm ma_nhan_vien, ho_ten, ten_trinh_do, ten_bo_phan, so_dien_thoai, dia_chi 
 -- mới chỉ lập được tối đa 3 hợp đồng từ năm 2020 đến 2021.
@@ -73,7 +75,8 @@ join bo_phan on bo_phan.ma_bo_phan = nhan_vien.ma_bo_phan
 join hop_dong on hop_dong.ma_nhan_vien = nhan_vien.ma_nhan_vien
 and year(ngay_lam_hop_dong) between 2020 and 2021
 group by hop_dong.ma_nhan_vien
-having so_lan_lam_hop_dong < 4;
+having so_lan_lam_hop_dong < 4
+order by ma_nhan_vien;
 
 
 
