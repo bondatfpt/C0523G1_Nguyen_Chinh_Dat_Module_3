@@ -39,7 +39,8 @@ join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_d
 group by dich_vu_di_kem.ma_dich_vu_di_kem
 having so_luong_su_dung_dvdk in (
 select max(truy_van_con.tong_so_luong_dvdk) from (
-select hop_dong_chi_tiet.ma_dich_vu_di_kem, sum(hop_dong_chi_tiet.so_luong) as tong_so_luong_dvdk
+select hop_dong_chi_tiet.ma_dich_vu_di_kem,
+sum(hop_dong_chi_tiet.so_luong) as tong_so_luong_dvdk
 from hop_dong_chi_tiet
 group by ma_dich_vu_di_kem) as truy_van_con);
 
@@ -47,5 +48,11 @@ group by ma_dich_vu_di_kem) as truy_van_con);
 -- 14.Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất. 
 -- Thông tin hiển thị bao gồm ma_hop_dong, ten_loai_dich_vu, ten_dich_vu_di_kem, so_lan_su_dung 
 -- (được tính dựa trên việc count các ma_dich_vu_di_kem).
+
+select hd.ma_hop_dong,loai_dich_vu.ten_loai_dich_vu
+from hop_dong hd
+join dich_vu dv on dv.ma_hop_dong = hd.ma_hop_dong
+join loai_dich_vu ldv on ldv.ma_loai_dich_vu = dv.ma_loai_dich_vu
+
 
 
