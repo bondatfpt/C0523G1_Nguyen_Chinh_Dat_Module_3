@@ -1,0 +1,45 @@
+.logo{
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    margin-left: 15px;
+}
+#nav-bar{
+    height: 60px;
+}
+#container-navbar{
+    margin-left: 30px;
+}
+#btn{
+    margin-left: 130px;
+}
+.header-link {
+    background-color: blue;
+    height: 40px;
+    width: 100%;
+}
+.header-link a {
+    color: aliceblue;
+    margin-left: 500px;
+    text-decoration: none;
+    line-height: 40px;
+}
+#container h1 {
+    margin-top: 150px;
+}
+.img-1{
+    position: relative;
+    width: 100%;
+    margin-left: 12px;
+}
+
+.text{
+    font-size: 30px;
+}
+.btn2{
+    position: relative;
+    width: 300px;
+}
+
+
+

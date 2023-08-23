@@ -11,7 +11,7 @@
       width: 50%;
     }
   }
-  
+
   /* Hiển thị 1 cột trên mỗi hàng cho màn hình nhỏ hơn 500px */
   @media screen and (max-width: 500px) {
     .col-3 {
