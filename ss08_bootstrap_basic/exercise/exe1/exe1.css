@@ -1,0 +1,19 @@
+@media screen and (min-width: 700px) {
+    .col-3 {
+      width: 25%;
+    }
+  }
+  
+  /* Hiển thị 2 cột trên cùng một hàng cho màn hình nhỏ hơn 992px */
+  @media screen and (max-width: 700px) {
+    .col-3 {
+      width: 50%;
+    }
+  }
+  
+  /* Hiển thị 1 cột trên mỗi hàng cho màn hình nhỏ hơn 576px */
+  @media screen and (max-width: 500px) {
+    .col-3 {
+      width: 100%;
+    }
+  }
