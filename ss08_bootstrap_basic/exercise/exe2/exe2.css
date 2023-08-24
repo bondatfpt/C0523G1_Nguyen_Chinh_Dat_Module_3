@@ -40,6 +40,38 @@
     position: relative;
     width: 300px;
 }
-
-
-
+.row-2 b{
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+.row-2 button {
+    margin-bottom: 50px;
+    width: 40%;
+    margin-left: 10p
+}
+.col-row-3{
+    padding: 15px;
+}
+.col-1{
+    padding: 15px;
+}
+.col-1 img{
+    height: 630px;
+}
+.row-4 b{
+    font-size: 30px;
+}
+.row-1-row-5 .col-1-row-1{
+    padding: 15px;
+}
+.row-col-1 div {
+    padding: 15px;
+}
+.col-2-row-5 div{
+    margin-top: 15px;
+    height: 472px;
+}
+.row-6 b {
+    font-size: 30px;
+}
