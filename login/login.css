@@ -1,0 +1,84 @@
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Define a class for styling a container */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+
+/* Style a heading */
+h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Style a paragraph */
+p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+label {
+    font-size: 20px;
+    color: #5D7B6F;
+
+}
+.form-check{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-check label{
+     margin-left: 10px;
+}
+#btn-log-in{
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5D7B6F;
+    border-color: #A4C3A2 ;
+}
+#btn-log-in:hover{
+    background-color:#A4C3A2 ;
+}
+.modal-header{
+    border-bottom: none;
+    margin-bottom: 20px;
+}
+.logo-login{
+    width: 100%;
+}
+.btn-close:hover{
+    background-color: #EAE7D6;
+}
+.btn-close{
+    float: right;
+}
+.lable-form{
+font-size: 30px;
+}
+.text-center p {
+    color: #B0D4B8;
+}
+.text-center a {
+    color: #5D7B6F;
+}
+.form-check-input:checked {
+    background-color: #5D7B6F;
+}
+#registerContent{
+    display: none;
+}
+#switchToLoginBtn, #switchToRegisterBtn {
+    border: none;
+    background-color: white;
+    color:#5D7B6F ;
+}
+

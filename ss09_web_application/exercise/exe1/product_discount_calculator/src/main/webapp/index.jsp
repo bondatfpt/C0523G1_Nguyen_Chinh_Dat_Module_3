@@ -5,7 +5,7 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<form action="/CalculateDiscountServlet" method="post">
+<form action="/calculate-discount" method="post">
     <label for="description">
         <input type="text" placeholder="Enter description" name="description">
     </label>

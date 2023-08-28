@@ -1,4 +1,4 @@
-package com.example.product_discount_calculator;
+package com.example.simpledictionaryjsp;
 
 import java.io.*;
 import javax.servlet.http.*;
