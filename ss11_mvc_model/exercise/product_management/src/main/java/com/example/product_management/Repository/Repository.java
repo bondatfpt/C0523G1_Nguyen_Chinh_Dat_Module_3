@@ -10,7 +10,7 @@ public class Repository implements IRepository{
     private static final String SELECT ="SELECT* FROM products";
     private static final String INSERT = "INSERT INTO products(name,price,description,supplier)\n" +
             "values (?,?,?,?);";
-    private static final String DELETE = "DELETE FROM products WHERE id = ?";
+    private static final String DELETE = "DELETE FROM products\n" +"WHERE id = ?";
     @Override
     public List<Product> showList() {
         Connection connection = BaseRepository.getConnection();

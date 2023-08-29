@@ -26,6 +26,7 @@ public class ProductServlet extends HttpServlet {
                 break;
             case "delete":
                 delete(request,response);
+                break;
             default:
                 showList(request, response);
         }
@@ -46,6 +47,13 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        iService.delete(id);
+        try {
+            response.sendRedirect("/product");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void create(HttpServletRequest request, HttpServletResponse response) {
