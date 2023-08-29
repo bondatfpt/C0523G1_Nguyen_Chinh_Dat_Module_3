@@ -7,4 +7,5 @@ import java.util.List;
 public interface IStudentRepository {
     List<Student> showList();
     void save(Student student);
+
 }

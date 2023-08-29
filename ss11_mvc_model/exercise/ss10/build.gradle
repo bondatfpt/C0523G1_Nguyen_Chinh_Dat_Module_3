@@ -26,7 +26,7 @@ dependencies {
     // Bắt buộc import để sử dụng được thư viện JSTL.
     implementation group: 'jstl', name: 'jstl', version: '1.2'
     // Bắt buộc import để connect với DB.
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
+        implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
     compileJava.options.encoding = 'UTF-8'
     tasks.withType(JavaCompile) {   options.encoding = 'UTF-8'}
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
