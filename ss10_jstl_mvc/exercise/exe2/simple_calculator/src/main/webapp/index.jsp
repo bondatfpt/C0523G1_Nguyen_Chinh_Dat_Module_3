@@ -8,7 +8,7 @@
 <body>
 <h1><%= "Simple Calculator" %></h1>
 <br/>
-<form action="/calculator-servlet" method="post">
+<form action="/calculator" method="post">
   <p>First Number</p>
   <input type="number" name="first-number">
   <p>Operator</p>

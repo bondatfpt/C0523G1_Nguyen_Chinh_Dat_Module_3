@@ -1,6 +1,6 @@
 package controller;
 
-import model.Calculator;
+import service.Calculator;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -8,7 +8,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "CalculatorServlet", value = "/calculator-servlet")
+@WebServlet(name = "CalculatorServlet", value = "/calculator")
 public class CalculatorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
