@@ -21,4 +21,19 @@ public class Service implements IService{
     public void delete(int id) {
         iRepository.delete(id);
     }
+    @Override
+    public Product getProductById(int id) {
+        return iRepository.getProductById(id);
+    }
+
+    @Override
+    public void update(int id, String name, double price, String description, String supplier) {
+        iRepository.update(id,name,price,description,supplier);
+    }
+
+    @Override
+    public List<Product> searchByName(String name) {
+        List <Product> productList = iRepository.searchByName(name);
+        return productList;
+    }
 }
