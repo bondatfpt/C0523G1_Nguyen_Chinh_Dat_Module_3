@@ -114,44 +114,16 @@
             <td><c:out value="${user.name}"/></td>
             <td><c:out value="${user.email}"/></td>
             <td><c:out value="${user.country}"/></td>
-            <td><button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="sendInforToModal('${user.id}','${user.name}')">
-                Delete
-            </button></td>
-            <td><button class="btn"><a href="/user?action=showFormUpdate&id=${user.id}">Update</a></button></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 
-<div class="modal" tabindex="-1" id="exampleModal1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="/user?action=delete" method="post">
-                <div class="modal-header">
-                    <h5 class="modal-title">Delete User</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" id="id_delete1" name="id_delete">
-                    <p>Are you sure to delete user ?</p> <span id="name_delete1" class="text-danger"></span>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-outline-danger">Delete</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
-<script>
-    function sendInforToModal(id,name){
-        document.getElementById("id_delete1").value = id;
-        document.getElementById("name_delete1").innerText = name;
-    }
-</script>
+
 </div>
 </body>
 </html>
