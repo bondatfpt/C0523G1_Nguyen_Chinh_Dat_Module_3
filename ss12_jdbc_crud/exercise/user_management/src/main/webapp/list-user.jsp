@@ -21,9 +21,6 @@
             border: 1px solid #ccc;
             border-collapse:collapse ;
         }
-        /*#sorted-list{*/
-        /*    display: none;*/
-        /*}*/
     </style>
 </head>
 <body>
@@ -33,11 +30,9 @@
     <lable>Search by country</lable>
     <input type="text" name="search">
     <button type="submit">Search</button>
-    <br>
+</form>
     <a href="/user?action=sort" id="sort">Sort by name</a>
-</form>
-</form>
-<table>
+    <table>
     <thead>
     <tr>
         <th>STT</th>
@@ -94,14 +89,13 @@
     let userList = document.getElementById("normal-list");
     let sortedList = document.getElementById("sorted-list")
 
-    link.addEventListener("click", function() {
-        userList.style.display = "none";
+    sortBtn.addEventListener('click', () => {
         sortedList.style.display = "block";
-    });
+        userList.style.display = "none";
+    })
+
 </script>
 </div>
-
-
 <div id="sorted-list">
 <a href="/user">Back</a><br>
 <table>
