@@ -1,4 +1,4 @@
-package com.example.product_management.Service;
+package com.example.product_management.service;
 
 import com.example.product_management.model.Product;
 

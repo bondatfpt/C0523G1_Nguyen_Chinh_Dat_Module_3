@@ -1,7 +1,7 @@
 package com.example.product_management.controller;
 
-import com.example.product_management.Service.IService;
-import com.example.product_management.Service.Service;
+import com.example.product_management.service.IService;
+import com.example.product_management.service.Service;
 import com.example.product_management.model.Product;
 
 import javax.servlet.*;
@@ -49,6 +49,7 @@ public class ProductServlet extends HttpServlet {
                 break;
             case "update":
                 update(request,response);
+                break;
             case "showdetail":
                 showDetail(request,response);
                 break;

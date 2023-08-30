@@ -1,7 +1,7 @@
-package com.example.product_management.Service;
+package com.example.product_management.service;
 
-import com.example.product_management.Repository.IRepository;
-import com.example.product_management.Repository.Repository;
+import com.example.product_management.repository.IRepository;
+import com.example.product_management.repository.Repository;
 import com.example.product_management.model.Product;
 
 import java.util.List;
