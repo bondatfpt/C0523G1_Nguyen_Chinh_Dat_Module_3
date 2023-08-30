@@ -11,5 +11,6 @@ public interface IService {
     User getUserById (int id);
     void update(int id,String name, String email, String country);
     List<User> getUserByCountry(String country);
+    List<User> sortByName();
 
 }

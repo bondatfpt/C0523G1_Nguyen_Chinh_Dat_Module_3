@@ -29,6 +29,9 @@ public class UserServlet extends HttpServlet {
             case "showFormUpdate":
                 showFormUpdate(request, response);
                 break;
+            case "sort":
+                sort(request,response);
+                break;
             default:
                 showList(request, response);
 
@@ -151,6 +154,20 @@ public class UserServlet extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }
+    }
+    private void sort(HttpServletRequest request, HttpServletResponse response) {
+        List<User> userList = iService.getAll();
+        userList = iService.sortByName();
+       request.setAttribute("userListSorted",userList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/list-user.jsp");
+        try {
+            requestDispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }

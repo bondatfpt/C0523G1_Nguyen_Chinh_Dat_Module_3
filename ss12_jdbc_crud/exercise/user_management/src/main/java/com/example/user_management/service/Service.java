@@ -40,4 +40,10 @@ public class Service implements IService{
         List<User> userList = iRepository.getUserByCountry(country);
         return userList;
     }
+
+    @Override
+    public List<User> sortByName() {
+        List<User> userList = getAll();
+        return iRepository.sortByName(userList);
+    }
 }

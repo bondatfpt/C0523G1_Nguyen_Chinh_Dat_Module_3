@@ -4,6 +4,8 @@ import com.example.user_management.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Repository implements IRepository {
@@ -121,6 +123,17 @@ public class Repository implements IRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return userList;
+    }
+
+    @Override
+    public List<User> sortByName(List<User> userList) {
+        Collections.sort(userList, new Comparator<User>() {
+            @Override
+            public int compare(User user1, User user2) {
+                return user1.getName().compareTo(user2.getName());
+            }
+        });
         return userList;
     }
 }
