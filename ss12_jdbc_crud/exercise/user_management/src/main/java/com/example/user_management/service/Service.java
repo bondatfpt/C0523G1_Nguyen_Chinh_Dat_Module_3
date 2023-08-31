@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Service implements IService{
-    IRepository iRepository = new Repository();
+    private IRepository iRepository = new Repository();
     @Override
     public List<User> getAll() {
         List<User> userList = iRepository.getAll();
