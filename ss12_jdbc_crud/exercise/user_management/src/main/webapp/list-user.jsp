@@ -32,6 +32,7 @@
     <button type="submit">Search</button>
 </form>
     <a href="/user?action=sort" id="sort">Sort by name</a>
+    <a href="/user">Back</a>
     <table>
     <thead>
     <tr>
@@ -85,42 +86,7 @@
         document.getElementById("id_delete").value = id;
         document.getElementById("name_delete").innerText = name;
     }
-    let sortBtn = document.getElementById("sort");
-    let userList = document.getElementById("normal-list");
-    let sortedList = document.getElementById("sorted-list")
-
-    sortBtn.addEventListener('click', () => {
-        sortedList.style.display = "block";
-        userList.style.display = "none";
-    })
 </script>
-</div>
-<div id="sorted-list">
-<a href="/user">Back</a><br>
-<table>
-    <thead>
-    <tr>
-        <th>STT</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Country</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${userListSorted}" var="user" varStatus="STT">
-        <tr>
-            <td><c:out value="${STT.count}"/></td>
-            <td><c:out value="${user.name}"/></td>
-            <td><c:out value="${user.email}"/></td>
-            <td><c:out value="${user.country}"/></td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
 </div>
 </body>
 </html>

@@ -158,7 +158,7 @@ public class UserServlet extends HttpServlet {
     private void sort(HttpServletRequest request, HttpServletResponse response) {
         List<User> userList = iService.getAll();
         userList = iService.sortByName();
-       request.setAttribute("userListSorted",userList);
+       request.setAttribute("userList",userList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/list-user.jsp");
         try {
             requestDispatcher.forward(request, response);
