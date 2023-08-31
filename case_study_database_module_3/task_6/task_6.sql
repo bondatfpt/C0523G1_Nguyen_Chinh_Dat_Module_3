@@ -82,51 +82,5 @@ group by hop_dong.ma_nhan_vien
 having so_lan_lam_hop_dong < 4
 order by ma_nhan_vien;
 
--- 16.Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021.
-set sql_safe_updates = 0;
-delete from nhan_vien
-where nhan_vien.ma_nhan_vien not in (
-				select hop_dong.ma_nhan_vien
-                from hop_dong
-                where year(hop_dong.ngay_lam_hop_dong) between 2019 and 2021
-);
-set sql_safe_updates = 1;
 
--- 17.Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, 
--- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.
 
-create view khach_hang_can_update as
-select khach_hang.ma_khach_hang, loai_khach.ma_loai_khach,
-			loai_khach.ten_loai_khach,
-		sum(chi_phi_thue + ifnull(so_luong,0) * ifnull(gia,0))
-        as tong_tien
-from khach_hang
-join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach 
-and ten_loai_khach ='Platinium' 
-join hop_dong on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
-and year(hop_dong.ngay_lam_hop_dong) = 2021
-join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
-join dich_vu on dich_vu.ma_dich_vu = hop_dong.ma_dich_vu
-join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
-group by hop_dong.ma_khach_hang;
-
-set sql_safe_updates = 0;
-update khach_hang
-set ma_loai_khach = 1
-where ma_loai_khach in (
-		select ma_loai_khach
-        from khach_hang_can_update
-        where tong_tien > 10000000
-);
-set sql_safe_updates = 1;
-
--- 18.Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
-set sql_safe_updates = 0;
-
-delete from khach_hang
-where khach_hang.ma_khach_hang in (
-		select hop_dong.ma_khach_hang
-        from hop_dong
-        where year (ngay_lam_hop_dong) < 2021
-);
-set sql_safe_updates = 1;

@@ -51,3 +51,5 @@ left join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet
 group by khach_hang.ma_khach_hang, hop_dong.ma_hop_dong
 order by khach_hang.ma_khach_hang;
 
+
+

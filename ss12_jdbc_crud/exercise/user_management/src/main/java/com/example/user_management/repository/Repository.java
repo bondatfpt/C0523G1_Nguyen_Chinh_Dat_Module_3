@@ -9,16 +9,13 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Repository implements IRepository {
-    private static final String SELECT ="SELECT * FROM users";
+    private static final String SELECT ="call getAll();";
     private static final String INSERT = "INSERT INTO users(name,email,country)\n" +
                                         "VALUES(?,?,?)";
-    private static final String DELETE = "DELETE FROM users\n" +
-                                         "WHERE id = ?";
+    private static final String DELETE = "call deleteUser(?)";
     private static final String GETUSERBYID = "SELECT * FROM users\n" +
                           "WHERE id =  ?";
-    private static final String UPDATE = "UPDATE users\n" +
-            "SET name = ?,email =?,country = ?\n" +
-            "where id = ?";
+    private static final String UPDATE = "call updateUser (?,?,?,?)";
     private static final String SEARCH ="SELECT users.name " +
             "FROM users " +
             "WHERE country LIKE ?";
@@ -96,10 +93,10 @@ public class Repository implements IRepository {
         Connection connection = BaseRepository.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE);
-            preparedStatement.setString(1,name);
-            preparedStatement.setString(2,email);
-            preparedStatement.setString(3,country);
-            preparedStatement.setInt(4,id);
+            preparedStatement.setInt(1,id);
+            preparedStatement.setString(2,name);
+            preparedStatement.setString(3,email);
+            preparedStatement.setString(4,country);
             preparedStatement.executeUpdate();
             connection.close();
         } catch (SQLException e) {
